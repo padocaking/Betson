@@ -2,6 +2,7 @@ import styled, { keyframes } from "styled-components";
 import Input from "../Components/Input";
 import Button from "../Components/Button";
 import { FcGoogle } from "react-icons/fc";
+import background1 from "../Images/Backgrounds/cassino_background.jpg"
 
 const Container = styled.div`
     height: var(--main-height);
@@ -37,7 +38,7 @@ const FormHolder = styled.main`
         width: 60%;
 
         h2 {
-            font-size: 2.5rem;
+            font-size: var(--main-title-font);
         }
 
         span {
@@ -58,11 +59,6 @@ const FormHolder = styled.main`
             margin-right: 0.5rem;
         }
     }
-`
-
-const underline = keyframes`
-    from { width: 100%; }
-    to { width: 0%; }
 `
 
 const Link = styled.span`
@@ -97,6 +93,21 @@ const BackgroundHolder = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url(${background1});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 40%;
+    background-color: rgba(0, 0, 0, 0.65);
+    background-blend-mode: darken;
+
+    font-size: var(--main-subtitle-font);
+    text-shadow:
+    0 0 3rem black,
+    0 0 3em black,
+    0 0 3em black,
+    0 0 3rem black,
+    0 0 3em black,
+    0 0 3em black;
 `
 
 export default function Login () {
@@ -106,8 +117,8 @@ export default function Login () {
                 <FormHolder>
                     <form action="#">
                         <h2>Entrar</h2>
-                        <Input type="email" placeholder="E-mail" w="300px" />
-                        <Input type="password" placeholder="Senha" w="300px" />
+                        <Input type="email" placeholder="E-mail" />
+                        <Input type="password" placeholder="Senha" />
                         <Link>Esqueci a minha senha</Link>
                         <Button bold={true}>ENTRAR</Button>
                         <Button styled={true}><FcGoogle className="icon" />Entrar com conta Google</Button>
@@ -117,7 +128,7 @@ export default function Login () {
             </Left>
             <Right>
                 <BackgroundHolder>
-                    <h2>Olá novamente!</h2>
+                    <h2>OLÁ NOVAMENTE!</h2>
                     <p>Gerson estava te esperando</p>
                 </BackgroundHolder>
             </Right>

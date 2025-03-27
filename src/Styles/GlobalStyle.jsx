@@ -16,7 +16,9 @@ const GlobalStyle = createGlobalStyle`
         --second-theme-two: #007fcf;
         --nav-height: 0px;
         --main-height: calc(100vh - var(--nav-height));
-        --main-max-font: 0.9rem;
+        --main-title-font: 2.5rem;
+        --main-subtitle-font: 1.5rem;
+        --main-max-font:0.9rem;
         --main-med-font: 0.85rem;
         --main-min-font: 0.8rem;
     }
