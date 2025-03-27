@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
         --dark: #181819;
         --dark-two: #1b1c1f;
         --lighter-dark: #1e1e1f; 
+        --lighter-dark-two: #212123; 
         --light: #dadada;
         --light-two: #9d9d9d;
         --main-theme: #e92522;
@@ -18,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
         --main-height: calc(100vh - var(--nav-height));
         --main-title-font: 2.5rem;
         --main-subtitle-font: 1.5rem;
-        --main-max-font:0.9rem;
+        --main-max-font: 1rem;
         --main-med-font: 0.85rem;
         --main-min-font: 0.8rem;
     }
@@ -31,6 +32,10 @@ const GlobalStyle = createGlobalStyle`
         color: var(--light);
         transition: all 0.2s ease;
         //font-family: "Montserrat", sans-serif;
+    }
+
+    body {
+        overflow: hidden;
     }
 
     a {
