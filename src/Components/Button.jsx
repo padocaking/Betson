@@ -36,9 +36,9 @@ const Container = styled.button`
 
     &:hover {
         &:after {
-            background-color: rgba(125, 125, 125, 0.1);
+            background-color: rgba(125, 125, 125, 0.15);
             background-blend-mode: lighten;
-            animation: ${hover} 10s linear infinite;
+            animation: ${hover} 8s linear infinite;
         }
     }
 `

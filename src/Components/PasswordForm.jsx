@@ -45,12 +45,6 @@ const Container = styled.main`
     }
 `
 
-const Fullname = styled.div`
-    width: 100%;
-    display: flex;
-    gap: 15px;
-`
-
 const Link = styled.span`
     cursor: pointer;
     background-image: linear-gradient(90deg, var(--main-theme), var(--main-theme-two));
@@ -76,20 +70,14 @@ const Link = styled.span`
     }
 `
 
-export default function SignupForm ({ setIsLogin }) {
+export default function PasswordForm ({ setIsLogin }) {
     return (
         <Container>
             <form action="#">
-                <h2>Bem-vindo!</h2>
-                <Fullname>
-                    <Input type="text" placeholder="Nome" />
-                    <Input type="text" placeholder="Sobrenome" />
-                </Fullname>
+                <h2>Resetar senha</h2>
                 <Input type="email" placeholder="E-mail" />
-                <Input type="password" placeholder="Senha" password={true} />
-                <Input type="password" placeholder="Confirmar senha" password={true} />
-                <Button bold={true}>REGISTRAR-SE</Button>
-                <span>Já possui uma conta? <Link onClick={() => setIsLogin(true)}>Clique aqui</Link></span>
+                <Button bold={true}>ENTRAR</Button>
+                <span>Para fazer login <Link onClick={() => setIsLogin(false)}>clique aqui</Link></span>
             </form>
         </Container>
     )

@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { useState } from "react";
 
 const Teste = styled.div`
     position: relative;
@@ -37,11 +39,36 @@ const Span = styled.span`
     transition: width 0.3s cubic-bezier(0.42, 0, 0.58, 1.00);
 `
 
-export default function Input ({ type, placeholder, width }) {
+const Occult = styled.div`
+    position: absolute;
+    right: 5%;
+    top: 25%;
+    font-size: 1.5rem;
+    opacity: 50%;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 80%;
+    }
+`
+
+export default function Input ({ type, placeholder, width, password }) {
+
+    const [showPassword, setUsePassword] = useState(false)
+
     return (
         <Teste>
-            <Container type={type} placeholder={placeholder} width={width} />
+            <Container type={showPassword ? "text" : type} placeholder={placeholder} width={width} />
             <Span className="input-border"></Span>
+            {password ? (
+                <Occult onClick={() => setUsePassword(!showPassword)}>
+                    {showPassword ? (
+                        <IoMdEye />
+                    ):(
+                        <IoMdEyeOff />
+                    )}
+                </Occult>
+            ) : null}
         </Teste>
     )
 }

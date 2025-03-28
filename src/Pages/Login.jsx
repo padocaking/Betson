@@ -3,6 +3,7 @@ import LoginForm from "../Components/LoginForm";
 import LoginBackground from "../Components/LoginBackground";
 import SignupForm from "../Components/SignupForm";
 import { useState } from "react";
+import PasswordForm from "../Components/PasswordForm";
 
 const slotIn = keyframes`
     0% {transform: translateY(-100%);}
@@ -61,6 +62,10 @@ const Right = styled.div`
     }
 `
 
+const FormContainer = styled.div`
+
+`
+
 export default function Login () {
 
     const [isLogin, setIsLogin] = useState(true)
@@ -68,12 +73,12 @@ export default function Login () {
     return (
         <Container>
             <Left isLogin={isLogin}>
-                <LoginForm setIsLogin={setIsLogin} />
-                <LoginBackground />
+                    <LoginForm setIsLogin={setIsLogin} />
+                    <LoginBackground />
             </Left>
             <Right isLogin={isLogin}>
-                <LoginBackground />
-                <SignupForm setIsLogin={setIsLogin} />
+                    <LoginBackground />
+                    <SignupForm setIsLogin={setIsLogin} />
             </Right>
         </Container>
     )

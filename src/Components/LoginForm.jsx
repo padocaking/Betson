@@ -76,7 +76,7 @@ export default function LoginForm ({ setIsLogin }) {
             <form action="#">
                 <h2>Entrar</h2>
                 <Input type="email" placeholder="E-mail" />
-                <Input type="password" placeholder="Senha" />
+                <Input type="password" placeholder="Senha" password={true} />
                 <Link>Esqueci a minha senha</Link>
                 <Button bold={true}>ENTRAR</Button>
                 <Button styled={true}><FcGoogle className="icon" />Entrar com conta Google</Button>
