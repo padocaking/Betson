@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import background1 from "../Images/Backgrounds/cassino-background.png"
-import gerson from "../Images/Backgrounds/full_gerson.png"
+import background1 from "../../Images/Backgrounds/cassino-background.png"
+import gerson from "../../Images/Backgrounds/full_gerson.png"
 
 const Container = styled.section`
     position: relative;

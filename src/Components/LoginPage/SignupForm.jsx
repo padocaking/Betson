@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Input from "./Input";
-import Button from "./Button";
+import Input from "../Input";
+import Button from "../Button";
 import { FcGoogle } from "react-icons/fc";
 
 
@@ -45,6 +45,12 @@ const Container = styled.main`
     }
 `
 
+const Fullname = styled.div`
+    width: 100%;
+    display: flex;
+    gap: 15px;
+`
+
 const Link = styled.span`
     cursor: pointer;
     background-image: linear-gradient(90deg, var(--main-theme), var(--main-theme-two));
@@ -70,14 +76,20 @@ const Link = styled.span`
     }
 `
 
-export default function PasswordForm ({ setIsLogin }) {
+export default function SignupForm ({ toLogin }) {
     return (
         <Container>
             <form action="#">
-                <h2>Resetar senha</h2>
+                <h2>Bem-vindo!</h2>
+                <Fullname>
+                    <Input type="text" placeholder="Nome" />
+                    <Input type="text" placeholder="Sobrenome" />
+                </Fullname>
                 <Input type="email" placeholder="E-mail" />
-                <Button bold={true}>ENTRAR</Button>
-                <span>Para fazer login <Link onClick={() => setIsLogin(false)}>clique aqui</Link></span>
+                <Input type="password" placeholder="Senha" password={true} />
+                <Input type="password" placeholder="Confirmar senha" password={true} />
+                <Button bold={true}>REGISTRAR-SE</Button>
+                <span>Já possui uma conta? <Link onClick={toLogin}>Clique aqui</Link></span>
             </form>
         </Container>
     )

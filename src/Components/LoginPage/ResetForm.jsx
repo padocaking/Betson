@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Input from "./Input";
-import Button from "./Button";
+import Input from "../Input";
+import Button from "../Button";
 import { FcGoogle } from "react-icons/fc";
 
 
@@ -70,17 +70,14 @@ const Link = styled.span`
     }
 `
 
-export default function LoginForm ({ setIsLogin }) {
+export default function ResetForm ({ toLogin }) {
     return (
         <Container>
             <form action="#">
-                <h2>Entrar</h2>
+                <h2>Resetar senha</h2>
                 <Input type="email" placeholder="E-mail" />
-                <Input type="password" placeholder="Senha" password={true} />
-                <Link>Esqueci a minha senha</Link>
                 <Button bold={true}>ENTRAR</Button>
-                <Button styled={true}><FcGoogle className="icon" />Entrar com conta Google</Button>
-                <span>Não possui uma conta? <Link onClick={() => setIsLogin(false)}>Clique aqui</Link></span>
+                <span>Para fazer login <Link onClick={toLogin}>clique aqui</Link></span>
             </form>
         </Container>
     )

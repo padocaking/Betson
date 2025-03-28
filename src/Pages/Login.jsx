@@ -1,9 +1,9 @@
 import styled, { keyframes } from "styled-components";
-import LoginForm from "../Components/LoginForm";
-import LoginBackground from "../Components/LoginBackground";
-import SignupForm from "../Components/SignupForm";
+import LoginForm from "../Components/LoginPage/LoginForm";
+import LoginBackground from "../Components/LoginPage/LoginBackground";
+import SignupForm from "../Components/LoginPage/SignupForm";
 import { useState } from "react";
-import PasswordForm from "../Components/PasswordForm";
+import ResetForm from "../Components/LoginPage/ResetForm";
 
 const slotIn = keyframes`
     0% {transform: translateY(-100%);}
@@ -26,59 +26,74 @@ const Left = styled.div`
     background-color: var(--dark);
     position: relative;
     flex: 1;
-
-    main:nth-child(1) {
-        position: absolute;
-        animation-name: ${props => props.isLogin ? slotIn : slotOut};
-        animation-duration: 0.9s;
-        transform: ${props => props.isLogin ? `translateY(0%)` : `translateY(-100%)`};
-    }
-
-    section:nth-child(2) {
-        position: absolute;
-        animation-name: ${props => !props.isLogin ? slotIn : slotOut};
-        animation-duration: 0.9s;
-        transform: ${props => !props.isLogin ? `translateY(0%)` : `translateY(-100%)`};
-    }
 `
 
 const Right = styled.div`
     background-color: var(--dark);
     position: relative;
     flex: 1;
-
-    section:nth-child(1) {
-        position: absolute;
-        animation-name: ${props => props.isLogin ? slotIn : slotOut};
-        animation-duration: 0.9s;
-        transform: ${props => props.isLogin ? `translateY(0%)` : `translateY(-100%)`};
-    }
-
-    main:nth-child(2) {
-        position: absolute;
-        animation-name: ${props => !props.isLogin ? slotIn : slotOut};
-        animation-duration: 0.9s;
-        transform: ${props => !props.isLogin ? `translateY(0%)` : `translateY(-100%)`};
-    }
 `
 
 const FormContainer = styled.div`
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 
+    &.in {
+        display: inherit;
+        animation-name: ${slotIn};
+        animation-duration: 0.6s;
+        transform: translateY(0);
+    }
+
+    &.out {
+        display: inherit;
+        animation-name: ${slotOut};
+        animation-duration: 0.6s;
+        transform: translateY(-100%);
+    }
 `
 
 export default function Login () {
 
-    const [isLogin, setIsLogin] = useState(true)
+    let oldForm = "signup"
+    let currentForm = "login"
+
+    const formsHandler = (newForm) => {
+        document.querySelectorAll(`.${oldForm}`).forEach(form => form.classList.remove("out"))
+        document.querySelectorAll(`.${currentForm}`).forEach(form => form.classList.remove("in"))
+
+        document.querySelectorAll(`.${currentForm}`).forEach(form => form.classList.add("out"))
+        document.querySelectorAll(`.${newForm}`).forEach(form => form.classList.add("in"))
+        
+        oldForm = currentForm
+        currentForm = newForm
+    }
 
     return (
         <Container>
-            <Left isLogin={isLogin}>
-                    <LoginForm setIsLogin={setIsLogin} />
+            <Left>
+                <FormContainer className="login in">
+                    <LoginForm toSignup={() => formsHandler("signup")} toReset={() => formsHandler("reset")} />
+                </FormContainer>
+                <FormContainer className="signup">
                     <LoginBackground />
+                </FormContainer>
+                <FormContainer className="reset">
+                    <ResetForm toLogin={() => formsHandler("login")} />
+                </FormContainer>
             </Left>
-            <Right isLogin={isLogin}>
+            <Right>
+                <FormContainer className="login in">
                     <LoginBackground />
-                    <SignupForm setIsLogin={setIsLogin} />
+                </FormContainer>
+                <FormContainer className="signup">
+                    <SignupForm toLogin={() => formsHandler("login")} />
+                </FormContainer>
+                <FormContainer className="reset">
+                    <LoginBackground />
+                </FormContainer>
             </Right>
         </Container>
     )
