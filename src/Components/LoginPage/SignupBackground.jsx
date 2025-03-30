@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import background1 from "../../Images/Backgrounds/gerson-jogando.png"
+import background1 from "../../Images/Backgrounds/gerson-familia-cassino.png"
 import gerson from "../../Images/Backgrounds/full_gerson.png"
 
 const Container = styled.section`
@@ -13,8 +13,8 @@ const Container = styled.section`
     background-image: url(${background1});
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: 75%;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-position: 55%;
+    background-color: rgba(0, 0, 0, 0.1);
     background-blend-mode: darken;
     z-index: 0;
 
@@ -53,13 +53,12 @@ const Gerson = styled.img`
     filter: brightness(75%);
 `
 
-export default function LoginBackground () {
+export default function SignupBackground () {
     return (
         <Container>
             <Gerson src={gerson} alt="Gerson" />
-            <h2>OLÁ NOVAMENTE!</h2>
-            <p>Para alguém com viciado em jogos de azar, a sensação de jogar é a sua droga. A compulsão pelo jogo altera o humor e o estado de espírito do jogador. Assim como em outros vícios, o dependente desenvolve uma tolerância e vai precisando jogar cada vez mais para se satisfazer. Muito comum ver jogadores viciados perseguindo suas perdas, acreditando que se continuarem jogando vão recuperar o dinheiro perdido. Com a rotina de jogo, o hábito se cria e a vontade de jogar torna–se incontrolável.
-            E, como citado no início, a pessoa viciada será a última a perceber o problema.</p>
+            <h2>BEM VINDO!</h2>
+            <p>Gerson era apenas um viciado em apostas, que lhe causavam problemas familiares, profissionais e psicológicas, porém tudo mudou quando Gerson usou todos fundos de sua família e colocou no verde. Agora Gerson dedica sua vida para mudar a vida de pessoas através das apostas. Junte a Gerson e se torne um vencedor!</p>
         </Container>
     )
 }
