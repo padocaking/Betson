@@ -4,15 +4,17 @@ import LoginBackground from "../Components/LoginPage/LoginBackground";
 import SignupForm from "../Components/LoginPage/SignupForm";
 import ResetForm from "../Components/LoginPage/ResetForm";
 import SignupBackground from "../Components/LoginPage/SignupBackground";
+import { useEffect, useState } from "react";
 
 const slotIn = keyframes`
-    0% {transform: translateY(-100%);}
-    100% {transform: translateY(0%);}
+    0% {transform: translateY(-100%); opacity: 0%;}
+    50% {opacity: 40%;}
+    100% {transform: translateY(0%); opacity: 100%;}
 `
 
 const slotOut = keyframes`
-    0% {transform: translateY(0%);}
-    100% {transform: translateY(100%);}
+    0% {transform: translateY(0%); opacity: 100%;}
+    100% {transform: translateY(100%); opacity: 0%;}
 `
 
 const Container = styled.div`
@@ -33,7 +35,7 @@ const Right = styled.div`
     position: relative;
     flex: 1;
 
-    @media(max-width: 1200px) {
+    @media (max-width: 1200px) {
         flex: 0;
     }
 `
@@ -61,9 +63,9 @@ const FormContainer = styled.div`
 `
 
 export default function Login () {
-
     let oldForm = "signup"
     let currentForm = "login"
+
 
     // Forms transition handler
     const formsHandler = (newForm) => {
@@ -99,11 +101,11 @@ export default function Login () {
                 <FormContainer className="reset">
                     <ResetForm toLogin={() => formsHandler("login")} />
                 </FormContainer>
-                
+
                 <FormContainer className="signup">
                     <SignupForm toLogin={() => formsHandler("login")} />
                 </FormContainer>
-
+                
             </Left>
 
             <Right>

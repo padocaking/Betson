@@ -5,10 +5,10 @@ const GlobalStyle = createGlobalStyle`
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
     :root {
-        --dark: #181819;
-        --dark-two: #1b1c1f;
-        --lighter-dark: #1e1e1f; 
-        --lighter-dark-two: #212123; 
+        --dark: #141415;
+        --dark-two: #121212;
+        --lighter-dark: #1b1b1c; 
+        --lighter-dark-two: #1d1d1e; 
         --light: #dadada;
         --light-two: #9d9d9d;
         --main-theme: #e92522;
