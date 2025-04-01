@@ -4,7 +4,7 @@ import LoginBackground from "../Components/LoginPage/LoginBackground";
 import SignupForm from "../Components/LoginPage/SignupForm";
 import ResetForm from "../Components/LoginPage/ResetForm";
 import SignupBackground from "../Components/LoginPage/SignupBackground";
-import { useEffect, useState } from "react";
+import Background from "../Images/wave.png"
 
 const slotIn = keyframes`
     0% {transform: translateY(-100%); opacity: 0%;}
@@ -17,11 +17,27 @@ const slotOut = keyframes`
     100% {transform: translateY(100%); opacity: 0%;}
 `
 
+const TextAnimation = keyframes`
+    from {height: 0%;}
+    to {height: 100%;}
+`
+
 const Container = styled.div`
     height: var(--main-height);
     width: 100%;
     display: flex;
     overflow: hidden;
+    position: relative;
+`
+
+const WaveBackground = styled.img`
+    z-index: 1;
+    min-width: 100%;
+    height: 33%;
+    bottom: -15%;
+    position: absolute;
+    pointer-events: none;
+    opacity: 20%;
 `
 
 const Left = styled.div`
@@ -52,6 +68,11 @@ const FormContainer = styled.div`
         animation-name: ${slotIn};
         animation-duration: 0.6s;
         transform: translateY(0);
+
+        > * > * > p {
+            animation-name: ${TextAnimation};
+            animation-duration: 1.6s;
+        }
     }
 
     &.out {
@@ -91,6 +112,8 @@ export default function Login () {
 
     return (
         <Container>
+
+            <WaveBackground src={Background} />
 
             <Left>
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
 import { useEffect } from "react";
 
@@ -30,6 +30,11 @@ const Container = styled.section`
     }
 `
 
+const TextAnimation = keyframes`
+    from {height: 0px;}
+    to {height: 100%;}
+`
+
 const Paragraphs = styled.div`
     display: flex;
     flex-direction: column;
@@ -46,6 +51,9 @@ const Paragraphs = styled.div`
         font-weight: 300;
         font-style: italic;
         text-align: center;
+        overflow: hidden;
+        animation-name: ${TextAnimation};
+        animation-duration: 1.5s;
     }
 
     .quote {
@@ -72,7 +80,7 @@ export default function LoginBackground () {
     return (
         <Container>
             <h2 className="">OLÁ!</h2>
-            <Paragraphs>
+            <Paragraphs className="paragraph-animation">
                 <FaQuoteLeft className="open quote" />
                 <FaQuoteRight className="close quote"  />
                 <p>Para alguém com viciado em jogos de azar, a sensação de jogar é a sua droga. A compulsão pelo jogo altera o humor e o estado de espírito do jogador. Assim como em outros vícios, o dependente desenvolve uma tolerância e vai precisando jogar cada vez mais para se satisfazer. Muito comum ver jogadores viciados perseguindo suas perdas, acreditando que se continuarem jogando vão recuperar o dinheiro perdido. Com a rotina de jogo, o hábito se cria e a vontade de jogar torna–se incontrolável.

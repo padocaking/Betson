@@ -1,6 +1,5 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
-import { useEffect } from "react";
 
 
 const Container = styled.section`
@@ -18,7 +17,7 @@ const Container = styled.section`
         font-size: calc(2.5vw + 2.5vh - 1rem);
         font-weight: 800;
         letter-spacing: 0.5rem;
-        max-width: 300px;
+        max-width: 50%;
         text-align: center;
     }
 
@@ -30,6 +29,11 @@ const Container = styled.section`
     .highlight {
         color: var(--main-theme-two);
     }
+`
+
+const TextAnimation = keyframes`
+    from {height: 0px;}
+    to {height: 100%;}
 `
 
 const Paragraphs = styled.div`
@@ -48,6 +52,9 @@ const Paragraphs = styled.div`
         font-weight: 300;
         font-style: italic;
         text-align: center;
+        overflow: hidden;
+        animation-name: ${TextAnimation};
+        animation-duration: 1.5s;
     }
 
     .quote {
