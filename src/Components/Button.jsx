@@ -1,6 +1,13 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const hover = keyframes`
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+`
 
 const Container = styled.button`
+    height: 54px;
     background-color: var(--dark);
     color: var(--light);
     border: none;
@@ -12,9 +19,9 @@ const Container = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: ${props => props.styled ? "auto" : "1"};
-    font-size: 0.9rem;
+    font-size: var(--main-med-font);
     font-weight: ${props => props.bold ? "700" : "300"};
+    z-index: ${props => props.styled ? "auto" : "1"};
 
     &:after {
         content: '';
@@ -22,8 +29,17 @@ const Container = styled.button`
         inset: 0;
         margin: -0.15rem;
         border-radius: 1000px;
-        background-image: linear-gradient(to right, var(--main-theme), var(--main-theme-two));
+        background-image: linear-gradient(to right, var(--main-theme-two), var(--main-theme), var(--main-theme-two));
+        background-size: 400%;
         z-index: -1;
+    }
+
+    &:hover {
+        &:after {
+            background-color: rgba(125, 125, 125, 0.15);
+            background-blend-mode: lighten;
+            animation: ${hover} 8s linear infinite;
+        }
     }
 `
 
