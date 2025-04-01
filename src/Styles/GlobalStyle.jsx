@@ -16,10 +16,10 @@ const GlobalStyle = createGlobalStyle`
         --main-theme-two: #db4a1e;
         --second-theme: #0091eb;
         --second-theme-two: #007fcf;
-        --nav-height: 0px;
+        --nav-height: 70px;
         --main-height: calc(100vh - var(--nav-height));
-        --main-title-font: 2.5rem;
-        --main-subtitle-font: 1.25rem;
+        --main-title-font: calc(2.5vw + 2.5vh);
+        --main-subtitle-font: calc(1.5vw + 2.5vh);
         --main-max-font: 1rem;
         --main-med-font: 0.85rem;
         --main-min-font: 0.8rem;

@@ -15,7 +15,7 @@ const Container = styled.section`
     background-color: var(--dark-two);
 
     h2 {
-        font-size: calc(2.5vw + 2.5vh - 1rem);
+        font-size: var(--main-title-font);
         font-weight: 800;
         letter-spacing: 0.5rem;
     }

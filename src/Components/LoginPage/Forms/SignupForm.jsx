@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import Input from "../Input";
-import Button from "../Button";
-import { FcGoogle } from "react-icons/fc";
+import Input from "../../Input";
+import Button from "../../Button";
 
 
 const Container = styled.main`
@@ -22,7 +21,7 @@ const Container = styled.main`
         width: 60%;
 
         h2 {
-            font-size: var(--main-title-font);
+            font-size: var(--main-subtitle-font);
         }
 
         span {
@@ -43,6 +42,12 @@ const Container = styled.main`
             margin-right: 0.5rem;
         }
     }
+`
+
+const Fullname = styled.div`
+    width: 100%;
+    display: flex;
+    gap: 15px;
 `
 
 const Link = styled.span`
@@ -70,17 +75,20 @@ const Link = styled.span`
     }
 `
 
-export default function LoginForm ({ toSignup, toReset }) {
+export default function SignupForm ({ toLogin }) {
     return (
         <Container>
             <form action="#">
-                <h2>Entrar</h2>
+                <h2>Bem-vindo!</h2>
+                <Fullname>
+                    <Input type="text" placeholder="Nome" />
+                    <Input type="text" placeholder="Sobrenome" />
+                </Fullname>
                 <Input type="email" placeholder="E-mail" />
                 <Input type="password" placeholder="Senha" password={true} />
-                <Link onClick={toReset}>Esqueci a minha senha</Link>
-                <Button bold={true}>ENTRAR</Button>
-                <Button styled={true}><FcGoogle className="icon" />Entrar com conta Google</Button>
-                <span>Não possui uma conta? <Link onClick={toSignup}>Clique aqui</Link></span>
+                <Input type="password" placeholder="Confirmar senha" password={true} />
+                <Button bold={true}>REGISTRAR-SE</Button>
+                <span>Já possui uma conta? <Link onClick={toLogin}>Clique aqui</Link></span>
             </form>
         </Container>
     )

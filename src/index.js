@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyle from './Styles/GlobalStyle';
 import Router from './Routes/Router';
+import Header from './Components/Header';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <GlobalStyle />
+    <Header />
     <Router />
   </React.StrictMode>
 );

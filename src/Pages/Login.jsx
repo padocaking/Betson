@@ -1,9 +1,9 @@
 import styled, { keyframes } from "styled-components";
-import LoginForm from "../Components/LoginPage/LoginForm";
-import LoginBackground from "../Components/LoginPage/LoginBackground";
-import SignupForm from "../Components/LoginPage/SignupForm";
-import ResetForm from "../Components/LoginPage/ResetForm";
-import SignupBackground from "../Components/LoginPage/SignupBackground";
+import LoginForm from "../Components/LoginPage/Forms/LoginForm";
+import LoginBackground from "../Components/LoginPage/Backgrounds/LoginBackground";
+import SignupForm from "../Components/LoginPage/Forms/SignupForm";
+import ResetForm from "../Components/LoginPage/Forms/ResetForm";
+import SignupBackground from "../Components/LoginPage/Backgrounds/SignupBackground";
 import Background from "../Images/wave.png"
 
 const slotIn = keyframes`
@@ -23,6 +23,7 @@ const TextAnimation = keyframes`
 `
 
 const Container = styled.div`
+    margin-top: var(--nav-height);
     height: var(--main-height);
     width: 100%;
     display: flex;
