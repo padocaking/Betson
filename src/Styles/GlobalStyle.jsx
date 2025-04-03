@@ -16,8 +16,8 @@ const GlobalStyle = createGlobalStyle`
         --main-theme-two: #db4a1e;
         --second-theme: #0091eb;
         --second-theme-two: #007fcf;
-        --nav-height: 70px;
-        --main-height: calc(100vh - var(--nav-height));
+        --header-height: 65px;
+        --main-height: calc(100vh - var(--header-height));
         --main-title-font: calc(2.5vw + 2.5vh);
         --main-subtitle-font: calc(1.5vw + 2.5vh);
         --main-max-font: 1rem;
@@ -42,6 +42,17 @@ const GlobalStyle = createGlobalStyle`
     a {
         color: inherit;
         text-decoration: none;
+    }
+
+    .center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mainHeight {    
+        min-height: var(--main-height);
+        margin-top: var(--header-height)
     }
 `
 
