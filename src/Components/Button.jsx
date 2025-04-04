@@ -22,6 +22,8 @@ const Container = styled.button`
     font-size: var(--main-med-font);
     font-weight: ${props => props.bold ? "700" : "300"};
     z-index: ${props => props.styled ? "auto" : "1"};
+    
+    letter-spacing: 0px;
 
     &:after {
         content: '';
@@ -35,6 +37,9 @@ const Container = styled.button`
     }
 
     &:hover {
+        background-color: var(--lighter-dark-two);
+        letter-spacing: 1px;
+
         &:after {
             background-color: rgba(125, 125, 125, 0.15);
             background-blend-mode: lighten;
@@ -43,9 +48,9 @@ const Container = styled.button`
     }
 `
 
-export default function Button ({ children, styled, width, bold }) {
+export default function Button ({ children, styled, width, bold, onClick }) {
     return (
-        <Container styled={styled} width={width} bold={bold}>
+        <Container onClick={onClick} styled={styled} width={width} bold={bold}>
             {children}
         </Container>
     )
