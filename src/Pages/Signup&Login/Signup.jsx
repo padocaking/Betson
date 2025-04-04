@@ -12,6 +12,7 @@ export default function Signup () {
     return (
         <Container className="mainHeight">
 
+            <WaveBackground className="top" src={Wave} />
             <WaveBackground src={Wave} alt="Wave" />
 
             <Left className="center">
@@ -41,7 +42,13 @@ export default function Signup () {
                     <Paragraphs>
                         <FaQuoteLeft className="open quote" />
                         <FaQuoteRight className="close quote"  />
-                        <p>Gerson era apenas um viciado em apostas, que lhe causavam problemas familiares, profissionais e psicológicas, porém tudo mudou quando Gerson usou todos fundos de sua família e colocou no verde. Agora Gerson dedica sua vida para mudar a vida de pessoas através das apostas. Junte a Gerson e se torne um <span className="highlight">VENCEDOR</span>!</p>
+                        <p>Gerson era apenas um viciado em apostas, que lhe causava
+                            problemas familiares, profissionais e psicológicas, porém
+                            tudo mudou quando Gerson usou todos fundos de sua família
+                            e colocou no verde. Agora Gerson dedica sua vida para mudar
+                            a vida de pessoas através das apostas. Junte a Gerson e se
+                            torne um <span className="highlight">VENCEDOR</span>!
+                        </p>
                     </Paragraphs>
 
                 </Background>

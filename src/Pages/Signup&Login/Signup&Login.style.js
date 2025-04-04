@@ -6,15 +6,33 @@ export const Container = styled.div`
     position: relative;
 `
 
-export const WaveBackground = styled.img`
+export const TopWaveBackground = styled.img`
     z-index: 1;
     min-width: 100%;
     height: 33%;
-    bottom: -12.5%;
+    top: -12.5%;
     position: absolute;
     pointer-events: none;
     opacity: 20%;
     overflow: hidden;
+    transform: scale(-1, -1);
+`
+
+export const WaveBackground = styled.img`
+    z-index: 1;
+    min-width: 100%;
+    height: 33%;
+    bottom: -15%;
+    position: absolute;
+    pointer-events: none;
+    opacity: 12.5%;
+    overflow: hidden;
+
+    &.top {
+        transform: scale(-1, -1);
+        top: -15%;
+        bottom: auto;
+    }
 `
 
 export const Left = styled.main`

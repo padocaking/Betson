@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
         --main-theme-two: #db4a1e;
         --second-theme: #0091eb;
         --second-theme-two: #007fcf;
-        --header-height: 65px;
+        --header-height: 78px;
         --main-height: calc(100vh - var(--header-height));
         --main-title-font: calc(2.5vw + 2.5vh);
         --main-subtitle-font: calc(1.5vw + 2.5vh);
