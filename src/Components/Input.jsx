@@ -35,8 +35,9 @@ const Span = styled.span`
     bottom: 0;
     left: 0;
     height: 2px;
-    background: linear-gradient(90deg, #FF6464 0%, #FFBF59 50%, #47C9FF 100%);
+    background: linear-gradient(90deg, var(--main-theme) 0%, var(--main-theme-two) 100%);
     transition: width 0.3s cubic-bezier(0.42, 0, 0.58, 1.00);
+    opacity: 80%;
 `
 
 const Occult = styled.div`
