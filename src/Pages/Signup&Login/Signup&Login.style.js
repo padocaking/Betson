@@ -4,6 +4,7 @@ export const Container = styled.div`
     display: flex;
     overflow: hidden;
     position: relative;
+    //background-image: linear-gradient(to right, var(--dark), black);
 `
 
 export const TopWaveBackground = styled.img`
