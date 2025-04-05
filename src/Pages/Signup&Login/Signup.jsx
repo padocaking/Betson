@@ -4,10 +4,18 @@ import Button from "../../Components/Button";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
 import Wave from "../../Images/wave.png"
 import { useNavigate } from "react-router-dom";
+import useForm from "../../Hooks/useForm";
 
 export default function Signup () {
+    
+    const { form, onChangeForm } = useForm()
 
-    const navigate = useNavigate()
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(form)
+    }
+
+    let navigate = useNavigate();
 
     return (
         <Container className="mainHeight">
@@ -17,17 +25,49 @@ export default function Signup () {
 
             <Left className="center">
 
-                <Form action="#">
+                <Form onSubmit={(e) => handleSubmit(e)}>
 
                     <h2>Bem-vindo!</h2>
                     <div className="fullname">
-                        <Input type="text" placeholder="Nome" />
-                        <Input type="text" placeholder="Sobrenome" />
+                        <Input
+                        error="false"
+                            name="name"
+                            type="text"
+                            required
+                            onChange={(e) => onChangeForm(e)}
+                            placeholder="Nome" />
+                        <Input
+                        error="false"
+                            name="surname"
+                            type="text"
+                            required
+                            onChange={(e) => onChangeForm(e)}
+                            placeholder="Sobrenome" />
                     </div>
-                    <Input type="email" placeholder="E-mail" />
-                    <Input type="password" placeholder="Senha" password={true} />
-                    <Input type="password" placeholder="Confirmar senha" password={true} />
-                    <Button bold={true}>REGISTRAR-SE</Button>
+                    <Input
+                        error="false"
+                        name="email"
+                        type="email"
+                        required
+                        onChange={(e) => onChangeForm(e)}
+                        placeholder="E-mail" />
+                    <Input
+                        error="false"
+                        name="password"
+                        type="password"
+                        placeholder="Senha"
+                        required
+                        onChange={(e) => onChangeForm(e)}
+                        password={true} />
+                    <Input
+                        error="false"
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="Confirmar senha"
+                        required
+                        onChange={(e) => onChangeForm(e)}
+                        password={true} />
+                    <Button type="submit" bold="true">REGISTRAR-SE</Button>
                     <span>Já possui uma conta? <Click onClick={() => navigate("/login")}>Clique aqui</Click></span>
 
                 </Form>

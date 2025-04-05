@@ -5,8 +5,16 @@ import { FcGoogle } from "react-icons/fc";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
 import Wave from "../../Images/wave.png"
 import { useNavigate } from "react-router-dom";
+import useForm from "../../Hooks/useForm";
 
 export default function Login () {
+    
+    const { form, onChangeForm } = useForm()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(form)
+    }
 
     let navigate = useNavigate();
 
@@ -18,13 +26,26 @@ export default function Login () {
 
             <Left className="center">
 
-                <Form action="#">
+                <Form onSubmit={(e) => handleSubmit(e)}>
 
                     <h2>Entrar</h2>
-                    <Input type="email" placeholder="E-mail" />
-                    <Input type="password" placeholder="Senha" password={true} />
+                    <Input
+                        error="false"
+                        type="email"
+                        placeholder="E-mail"
+                        name="email"
+                        required
+                        onChange={(e) => onChangeForm(e)} />
+                    <Input
+                        error="false"
+                        type="password"
+                        placeholder="Senha"
+                        password={true}
+                        name="password"
+                        required
+                        onChange={(e) => onChangeForm(e)} />
                     <Click onClick={() => navigate("/reset")}>Esqueci a minha senha</Click>
-                    <Button bold="true">ENTRAR</Button>
+                    <Button type="submit" bold="true">ENTRAR</Button>
                     <Button styled="true"><FcGoogle className="icon" />Entrar com conta Google</Button>
                     <span>Não possui uma conta? <Click onClick={() => navigate("/signup")}>Clique aqui</Click></span>
 
