@@ -19,7 +19,7 @@ const Container = styled.input`
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     &.error {
-        box-shadow: inset 0 0 3px 0 red;
+        box-shadow: inset 0 0 4px 0 #ff000054;
     }
 
     &:focus {
@@ -58,14 +58,14 @@ const Occult = styled.div`
 `
 
 export default function Input ({
-    onChange,
     name,
     required,
     type,
     placeholder,
     width,
     password,
-    error
+    error,
+    useForm
 }) {
 
     const [showPassword, setUsePassword] = useState(false)
@@ -74,12 +74,13 @@ export default function Input ({
         <Teste>
             <Container
                 className={error === "true" ? "error" : ""}
-                onChange={onChange}
                 name={name}
                 required={required}
                 type={showPassword ? "text" : type}
                 placeholder={placeholder}
-                width={width} />
+                width={width}
+                {...useForm}
+            />
             <Span className="input-border"></Span>
             {password ? (
                 <Occult onClick={() => setUsePassword(!showPassword)}>

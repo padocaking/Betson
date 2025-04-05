@@ -68,6 +68,20 @@ export const Form = styled.form`
         text-align: center;
     }
 
+    .errorMessage {
+        color:rgba(255, 0, 0, 0.66);
+        margin-top: -20px;
+        margin-left: 5px;
+        align-self: flex-start;
+        font-size: var(--main-min-font);
+        opacity: 0%;
+        height: 0px;
+    }
+
+    .opened {
+        opacity: 100%;
+        height: 10px;
+    }
 
     span {
         font-size: var(--main-med-font);
