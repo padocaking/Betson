@@ -74,9 +74,15 @@ const LoginBtns = styled.div`
     gap: 15px;
 
     button {
-        width: 100px;
+        width: 125px;
         font-size: var(--main-med-font);
         height: 45px;
+
+        &.login {
+            &:after {
+                background-image: linear-gradient(to right, var(--dark), var(--dark));
+            }
+        }
     }
 `
 
@@ -101,8 +107,8 @@ export default function Header () {
                 </Picture>
             ) : (
                 <LoginBtns>
-                    <Button onClick={() => navigate("/login")} styled="true">Login</Button>
-                    <Button onClick={() => navigate("/signup")}>Signup</Button>
+                    <Button className="login" onClick={() => navigate("/login")}>Entrar</Button>
+                    <Button onClick={() => navigate("/signup")}>Registrar-se</Button>
                 </LoginBtns>
             )}
         </Container>

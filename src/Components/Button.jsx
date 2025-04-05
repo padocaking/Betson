@@ -48,9 +48,16 @@ const Container = styled.button`
     }
 `
 
-export default function Button ({ children, styled, width, bold, onClick, type }) {
+export default function Button ({ children, styled, width, bold, onClick, type, className }) {
     return (
-        <Container onClick={onClick} type={type} styled={styled} width={width} bold={bold}>
+        <Container
+            onClick={onClick}
+            type={type}
+            styled={styled}
+            width={width}
+            bold={bold}
+            className={className}
+        >
             {children}
         </Container>
     )
