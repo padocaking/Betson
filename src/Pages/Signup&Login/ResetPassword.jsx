@@ -4,15 +4,26 @@ import Button from "../../Components/Button";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
 import Wave from "../../Images/wave.png"
 import { useNavigate } from "react-router-dom";
-import useForm from "../../Hooks/useForm";
+import * as Yup from "yup"
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 
 export default function ResetPassword () {
     
-    const { form, onChangeForm } = useForm()
+    const schema = Yup.object().shape({
+        email: Yup.string().email("E-mail inválido").required("E-mail é obrigatório")
+    })
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(form)
+    const {
+        register,
+        handleSubmit,
+        formState: {errors}
+    } = useForm({
+        resolver: yupResolver(schema)
+    })
+
+    const onSubmit = (data) => {
+        console.log(data)
     }
 
     let navigate = useNavigate();
@@ -26,14 +37,14 @@ export default function ResetPassword () {
 
             <Left className="center">
 
-                <Form onSubmit={(e) => handleSubmit(e)}>
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     <h2>Resetar senha</h2>
                     <Input
-                        name="email"
+                        error={errors.email?.message === undefined ? "false" : "true"}
+                        errorMsg={errors.email?.message}
                         type="email"
                         placeholder="E-mail"
-                        required
-                        onChange={(e) => onChangeForm(e)}
+                        useForm={{...register("email")}}
                     />
                     <Button bold="true">ENVIAR</Button>
                     <span>Para fazer login <Click onClick={() => navigate("/login")}>clique aqui</Click></span>

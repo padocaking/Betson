@@ -43,26 +43,20 @@ export default function Login () {
                     <h2>Entrar</h2>
                     <Input
                         error={errors.email?.message === undefined ? "false" : "true"}
+                        errorMsg={errors.email?.message}
                         type="email"
                         placeholder="E-mail"
-                        name="email"
                         useForm={{...register("email")}}
                     />
-                    <span className={errors.email?.message === undefined ? "errorMessage" : "errorMessage opened"}>
-                        {errors.email?.message}
-                    </span>
 
                     <Input
                         error={errors.password?.message === undefined ? "false" : "true"}
+                        errorMsg={errors.password?.message}
                         type="password"
                         placeholder="Senha"
-                        password={true}
-                        name="password"
                         useForm={{...register("password")}}
+                        password
                     />
-                    <span className={errors.password?.message === undefined ? "errorMessage" : "errorMessage opened"}>
-                        {errors.password?.message}
-                    </span>
 
                     <Click onClick={() => navigate("/reset")}>Esqueci a minha senha</Click>
                     <Button type="submit" bold="true">ENTRAR</Button>

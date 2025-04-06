@@ -2,12 +2,18 @@ import styled from "styled-components";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useState } from "react";
 
-const Teste = styled.div`
+const Container = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+`
+
+const Underline = styled.div`
     position: relative;
     width: 100%;
 `
 
-const Container = styled.input`
+const InputContainer = styled.input`
     background-color: var(--lighter-dark);
     border: none;
     padding: 15px;
@@ -19,7 +25,7 @@ const Container = styled.input`
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     &.error {
-        box-shadow: inset 0 0 4px 0 #ff000054;
+        box-shadow: inset 0 0 2px 0 #ff0000d1;
     }
 
     &:focus {
@@ -57,6 +63,20 @@ const Occult = styled.div`
     }
 `
 
+const InputError = styled.span`
+    color:rgba(255, 0, 0, 0.66);
+    margin-left: 6px;
+    align-self: flex-start;
+    opacity: 0%;
+    height: 0px;
+
+    &.error {
+        opacity: 100%;
+        height: 10px;
+        font-size: var(--main-min-font);
+    }
+`
+
 export default function Input ({
     name,
     required,
@@ -65,32 +85,39 @@ export default function Input ({
     width,
     password,
     error,
+    errorMsg,
     useForm
 }) {
 
     const [showPassword, setUsePassword] = useState(false)
 
     return (
-        <Teste>
-            <Container
-                className={error === "true" ? "error" : ""}
-                name={name}
-                required={required}
-                type={showPassword ? "text" : type}
-                placeholder={placeholder}
-                width={width}
-                {...useForm}
-            />
-            <Span className="input-border"></Span>
-            {password ? (
-                <Occult onClick={() => setUsePassword(!showPassword)}>
-                    {showPassword ? (
-                        <IoMdEye />
-                    ):(
-                        <IoMdEyeOff />
-                    )}
-                </Occult>
-            ) : null}
-        </Teste>
+        
+        <Container>
+            <Underline>
+                <InputContainer
+                    className={error === "true" ? "error" : ""}
+                    name={name}
+                    required={required}
+                    type={showPassword ? "text" : type}
+                    placeholder={placeholder}
+                    width={width}
+                    {...useForm}
+                />
+                <Span className="input-border"></Span>
+                {password ? (
+                    <Occult onClick={() => setUsePassword(!showPassword)}>
+                        {showPassword ? (
+                            <IoMdEye />
+                        ):(
+                            <IoMdEyeOff />
+                        )}
+                    </Occult>
+                ) : null}
+            </Underline>
+            <InputError className={error === "true" ? "error" : ""}>
+                {errorMsg}
+            </InputError>
+        </Container>
     )
 }
