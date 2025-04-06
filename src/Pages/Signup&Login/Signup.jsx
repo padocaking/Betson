@@ -2,17 +2,47 @@ import { Container, WaveBackground, Left, Right, Form, Click, Background, Paragr
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
-import Wave from "../../Images/wave.png"
+import Wave from "../../Images/wave.png";
+import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import useForm from "../../Hooks/useForm";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Signup () {
     
-    const { form, onChangeForm } = useForm()
+    const schema = Yup.object().shape({
+        name: Yup
+            .string()
+            .required("Nome é obrigatório"),
+        surname: Yup
+            .string()
+            .required("Sobrenome é obrigatório"),
+        email: Yup
+            .string()
+            .required("E-mail é obrigatório")
+            .email("E-mail inválido"),
+        password: Yup
+            .string()
+            .required("Senha é obrigatório")
+            .min(8, "Senha deve ter no mínimo 8 caracteres")
+            .matches(/[a-zA-Z]/, "Senha deve conter pelo menos uma letra")
+            .matches(/\d/, "Senha deve conter pelo menos um número"),
+        confirmPassword: Yup
+            .string()
+            .required("Necessário confirmar senha")
+            .oneOf([Yup.ref("password"), null], "As senhas devem ser iguais")
+    })
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(form)
+    const {
+        register,
+        handleSubmit,
+        formState: {errors}
+    } = useForm({
+        resolver: yupResolver(schema)
+    })
+
+    const onSubmit = (data) => {
+        console.log(data)
     }
 
     let navigate = useNavigate();
@@ -25,48 +55,51 @@ export default function Signup () {
 
             <Left className="center">
 
-                <Form onSubmit={(e) => handleSubmit(e)}>
+                <Form onSubmit={handleSubmit(onSubmit)}>
 
                     <h2>Bem-vindo!</h2>
+
                     <div className="fullname">
                         <Input
-                        error="false"
-                            name="name"
+                            error={errors.name?.message === undefined ? "false" : "true"}
+                            errorMsg={errors.name?.message}
                             type="text"
-                            required
-                            onChange={(e) => onChangeForm(e)}
-                            placeholder="Nome" />
+                            placeholder="Nome"
+                            useForm={{...register("name")}}
+                        />
                         <Input
-                        error="false"
-                            name="surname"
+                            error={errors.surname?.message === undefined ? "false" : "true"}
+                            errorMsg={errors.surname?.message}
                             type="text"
-                            required
-                            onChange={(e) => onChangeForm(e)}
-                            placeholder="Sobrenome" />
+                            placeholder="Sobrenome"
+                            useForm={{...register("surname")}}
+                        />
                     </div>
+
                     <Input
-                        error="false"
-                        name="email"
+                        error={errors.email?.message === undefined ? "false" : "true"}
+                        errorMsg={errors.email?.message}
                         type="email"
-                        required
-                        onChange={(e) => onChangeForm(e)}
-                        placeholder="E-mail" />
+                        placeholder="E-mail"
+                        useForm={{...register("email")}}
+                    />
                     <Input
-                        error="false"
-                        name="password"
+                        error={errors.password?.message === undefined ? "false" : "true"}
+                        errorMsg={errors.password?.message}
                         type="password"
                         placeholder="Senha"
-                        required
-                        onChange={(e) => onChangeForm(e)}
-                        password={true} />
+                        useForm={{...register("password")}}
+                        password
+                    />
                     <Input
-                        error="false"
-                        name="confirmPassword"
+                        error={errors.confirmPassword?.message === undefined ? "false" : "true"}
+                        errorMsg={errors.confirmPassword?.message}
                         type="password"
                         placeholder="Confirmar senha"
-                        required
-                        onChange={(e) => onChangeForm(e)}
-                        password={true} />
+                        useForm={{...register("confirmPassword")}}
+                        password
+                    />
+                    
                     <Button type="submit" bold="true">REGISTRAR-SE</Button>
                     <span>Já possui uma conta? <Click onClick={() => navigate("/login")}>Clique aqui</Click></span>
 

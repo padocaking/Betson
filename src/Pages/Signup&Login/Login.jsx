@@ -5,15 +5,27 @@ import { FcGoogle } from "react-icons/fc";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
 import Wave from "../../Images/wave.png"
 import { useNavigate } from "react-router-dom";
-import useForm from "../../Hooks/useForm";
+import * as Yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Login () {
     
-    const { form, onChangeForm } = useForm()
+    const schema = Yup.object().shape({
+        email: Yup.string().email("E-mail inválido").required("E-mail é obrigatório"),
+        password: Yup.string().required("Senha é obrigatório")
+    })
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(form)
+    const {
+        register,
+        handleSubmit,
+        formState: {errors}
+    } = useForm({
+        resolver: yupResolver(schema)
+    })
+
+    const onSubmit = (data) => {
+        console.log(data)
     }
 
     let navigate = useNavigate();
@@ -26,24 +38,26 @@ export default function Login () {
 
             <Left className="center">
 
-                <Form onSubmit={(e) => handleSubmit(e)}>
+                <Form onSubmit={handleSubmit(onSubmit)}>
 
                     <h2>Entrar</h2>
                     <Input
-                        error="false"
+                        error={errors.email?.message === undefined ? "false" : "true"}
+                        errorMsg={errors.email?.message}
                         type="email"
                         placeholder="E-mail"
-                        name="email"
-                        required
-                        onChange={(e) => onChangeForm(e)} />
+                        useForm={{...register("email")}}
+                    />
+
                     <Input
-                        error="false"
+                        error={errors.password?.message === undefined ? "false" : "true"}
+                        errorMsg={errors.password?.message}
                         type="password"
                         placeholder="Senha"
-                        password={true}
-                        name="password"
-                        required
-                        onChange={(e) => onChangeForm(e)} />
+                        useForm={{...register("password")}}
+                        password
+                    />
+
                     <Click onClick={() => navigate("/reset")}>Esqueci a minha senha</Click>
                     <Button type="submit" bold="true">ENTRAR</Button>
                     <Button styled="true"><FcGoogle className="icon" />Entrar com conta Google</Button>
